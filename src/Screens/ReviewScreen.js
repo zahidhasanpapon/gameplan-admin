@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Row, Col, Image, ListGroup } from "react-bootstrap";
-import reviews from "../reviews";
+import axios from "axios";
+const url = "http://localhost:5000/reviews";
 
 const ReviewScreen = ({ match }) => {
-  const review = reviews.find((r) => r._id === match.params.id);
+  const [review, setReview] = useState([]);
+  useEffect(() => {
+    const fetchReview = async () => {
+      const { data } = await axios.get(`${url}/${match.params.id}`);
+      setReview(data);
+    };
+    fetchReview();
+  }, [match]);
+
   return (
     <>
       <Link className="btn btn-light my-3" to="/">
@@ -16,7 +26,7 @@ const ReviewScreen = ({ match }) => {
         <Col md={3}>
           <ListGroup variant="flush">
             <ListGroup.Item>Name: {review.name}</ListGroup.Item>
-            <ListGroup.Item>Quote: {review.quote}</ListGroup.Item>
+            <ListGroup.Item>Review: {review.review}</ListGroup.Item>
           </ListGroup>
         </Col>
       </Row>
