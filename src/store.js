@@ -6,10 +6,13 @@ import {
   reviewDetailsReducer,
 } from "./reducers/reviewReducers";
 import {
+  adminDeleteReducer,
   adminDetailsReducer,
+  adminListReducer,
   adminLoginReducer,
   adminRegisternReducer,
   adminUpdateProfileReducer,
+  adminUpdateReducer,
 } from "./reducers/adminReducers";
 
 const reducer = combineReducers({
@@ -19,6 +22,9 @@ const reducer = combineReducers({
   adminRegister: adminRegisternReducer,
   adminDetails: adminDetailsReducer,
   adminUpdateProfile: adminUpdateProfileReducer,
+  adminList: adminListReducer,
+  adminDelete: adminDeleteReducer,
+  adminUpdate: adminUpdateReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo")

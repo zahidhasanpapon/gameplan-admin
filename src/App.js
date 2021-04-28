@@ -7,6 +7,8 @@ import { Container } from "react-bootstrap";
 import LoginScreen from "./Screens/LoginScreen";
 import RegisterScreen from "./Screens/RegisterScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
+import AdminListScreen from "./Screens/AdminListScreen";
+import AdminEditScreen from "./Screens/AdminEditScreen";
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={RegisterScreen} />
           <Route path="/profile" component={ProfileScreen} />
+          <Route path="/adminlist" component={AdminListScreen} />
+          <Route path="/admin/:id/edit" component={AdminEditScreen} />
         </Container>
       </main>
       <Footer />
