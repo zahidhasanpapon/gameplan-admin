@@ -9,6 +9,8 @@ import RegisterScreen from "./Screens/RegisterScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
 import AdminListScreen from "./Screens/AdminListScreen";
 import AdminEditScreen from "./Screens/AdminEditScreen";
+import ReviewListScreen from "./Screens/ReviewListScreen";
+import ReviewEditScreen from "./Screens/ReviewEditScreen";
 
 const App = () => {
   return (
@@ -22,7 +24,9 @@ const App = () => {
           <Route path="/register" component={RegisterScreen} />
           <Route path="/profile" component={ProfileScreen} />
           <Route path="/adminlist" component={AdminListScreen} />
+          <Route path="/admin/reviewlist" component={ReviewListScreen} />
           <Route path="/admin/:id/edit" component={AdminEditScreen} />
+          <Route path="/reviews/:id/edit" component={ReviewEditScreen} />
         </Container>
       </main>
       <Footer />

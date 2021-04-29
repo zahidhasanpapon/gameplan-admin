@@ -4,6 +4,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
   reviewListReducer,
   reviewDetailsReducer,
+  reviewDeleteReducer,
+  reviewCreateReducer,
+  reviewUpdatReducer,
 } from "./reducers/reviewReducers";
 import {
   adminDeleteReducer,
@@ -25,6 +28,9 @@ const reducer = combineReducers({
   adminList: adminListReducer,
   adminDelete: adminDeleteReducer,
   adminUpdate: adminUpdateReducer,
+  reviewDelete: reviewDeleteReducer,
+  reviewCreate: reviewCreateReducer,
+  reviewUpdate: reviewUpdatReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo")
