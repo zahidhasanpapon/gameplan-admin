@@ -8,11 +8,11 @@ const Review = ({ review }) => {
         <Link to={`/review/${review._id}`}>
           <Card.Img src={review.image} variant="top" />
         </Link>
-
         <Card.Body>
           <Link to={`/review/${review._id}`}>
             <Card.Title as="div">
               <strong>{review.name}</strong>
+              {review.image}
             </Card.Title>
           </Link>
           <Card.Text as="div">

@@ -17,6 +17,7 @@ import {
   adminUpdateProfileReducer,
   adminUpdateReducer,
 } from "./reducers/adminReducers";
+import { faqListReducer } from "./reducers/faqReducers";
 
 const reducer = combineReducers({
   reviewList: reviewListReducer,
@@ -31,6 +32,7 @@ const reducer = combineReducers({
   reviewDelete: reviewDeleteReducer,
   reviewCreate: reviewCreateReducer,
   reviewUpdate: reviewUpdatReducer,
+  faqList: faqListReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo")

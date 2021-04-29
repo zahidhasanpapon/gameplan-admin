@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { listReviewDetails, updateReview } from "../actions/reviewActions";
 import FormContainer from "../components/FormContainer";
 import { REVIEW_UPDATE_RESET } from "../constants/reviewConstants";
+import axios from "axios";
 
 const ReviewEditScreen = ({ match, history }) => {
   const reviewId = match.params.id;
@@ -16,6 +17,7 @@ const ReviewEditScreen = ({ match, history }) => {
   const [team, setTeam] = useState("");
   const [quote, setQuote] = useState("");
   const [rating, setRating] = useState(0);
+  const [uploading, setUploading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -32,7 +34,7 @@ const ReviewEditScreen = ({ match, history }) => {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: REVIEW_UPDATE_RESET });
-      history.push("");
+      history.push("/");
     } else {
       if (!review.name || review._id !== reviewId) {
         dispatch(listReviewDetails(reviewId));
@@ -45,6 +47,33 @@ const ReviewEditScreen = ({ match, history }) => {
       }
     }
   }, [review, reviewId, dispatch, history, successUpdate]);
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post(
+        "http://localhost:5000/upload",
+        formData,
+        config
+      );
+
+      setImage(data);
+      setUploading(false);
+    } catch (error) {
+      console.error(error);
+      setUploading(false);
+    }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -93,6 +122,14 @@ const ReviewEditScreen = ({ match, history }) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
+              <Form.File
+                id="image-file"
+                label="Choose File"
+                custom
+                onChange={uploadFileHandler}
+              ></Form.File>
+              {uploading && <Loader />}
+              {uploading && <Loader />}
             </Form.Group>
 
             <Form.Group controlId="team">
