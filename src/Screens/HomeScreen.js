@@ -17,8 +17,6 @@ const HomeScreen = () => {
     dispatch(listReviews());
   }, [dispatch]);
 
-  console.log(reviews);
-
   return (
     <>
       <h1>Reviews by Users</h1>
