@@ -17,7 +17,11 @@ import {
   adminUpdateProfileReducer,
   adminUpdateReducer,
 } from "./reducers/adminReducers";
-import { faqListReducer } from "./reducers/faqReducers";
+import {
+  faqCreateReducer,
+  faqDeleteReducer,
+  faqListReducer,
+} from "./reducers/faqReducers";
 
 const reducer = combineReducers({
   reviewList: reviewListReducer,
@@ -33,6 +37,8 @@ const reducer = combineReducers({
   reviewCreate: reviewCreateReducer,
   reviewUpdate: reviewUpdatReducer,
   faqList: faqListReducer,
+  faqCreate: faqCreateReducer,
+  faqDelete: faqDeleteReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo")

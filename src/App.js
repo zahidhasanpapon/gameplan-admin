@@ -12,6 +12,7 @@ import AdminEditScreen from "./Screens/AdminEditScreen";
 import ReviewListScreen from "./Screens/ReviewListScreen";
 import ReviewEditScreen from "./Screens/ReviewEditScreen";
 import FaqListScreen from "./Screens/FaqListScreen";
+import FaqEditScreen from "./Screens/FaqEditScreen";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/admin/:id/edit" component={AdminEditScreen} />
           <Route path="/reviews/:id/edit" component={ReviewEditScreen} />
           <Route path="/admin/faqlist" component={FaqListScreen} />
+          <Route path="/faq/edit" component={FaqEditScreen} />
         </Container>
       </main>
       <Footer />

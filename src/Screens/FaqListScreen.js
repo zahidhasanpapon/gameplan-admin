@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listFaqs } from "../actions/faqActions";
+import { listFaqs, deleteFaq } from "../actions/faqActions";
+import { Link } from "react-router-dom";
 
 const FaqListScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const FaqListScreen = ({ history }) => {
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {
-      //   dispatch(deleteAdmin(id));
+      dispatch(deleteFaq(id));
     }
   };
 
@@ -31,7 +32,17 @@ const FaqListScreen = ({ history }) => {
 
   return (
     <>
-      <h1>FAQ</h1>
+      <Row className="align-items-center">
+        <Col>
+          <h1>FAQs</h1>
+        </Col>
+        <Col className="text-right">
+          {/* <Button className="my-3">
+            <i className="fas fa-plus"></i>Create New Faq
+          </Button> */}
+          <Link to="/faq/edit">Create New Faq</Link>
+        </Col>
+      </Row>
       {loading ? (
         <Loader />
       ) : error ? (

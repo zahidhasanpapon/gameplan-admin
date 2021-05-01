@@ -1,5 +1,11 @@
 import axios from "axios";
 import {
+  FAQ_CREATE_FAIL,
+  FAQ_CREATE_REQUEST,
+  FAQ_CREATE_SUCCESS,
+  FAQ_DELETE_FAIL,
+  FAQ_DELETE_REQUEST,
+  FAQ_DELETE_SUCCESS,
   FAQ_LIST_FAIL,
   FAQ_LIST_REQUEST,
   FAQ_LIST_SUCCESS,
@@ -26,6 +32,72 @@ export const listFaqs = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: FAQ_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const createFaq = (question, answer) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: FAQ_CREATE_REQUEST,
+    });
+
+    const {
+      adminLogin: { adminInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${adminInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.post(url, { question, answer }, config);
+
+    dispatch({
+      type: FAQ_CREATE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: FAQ_CREATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const deleteFaq = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: FAQ_DELETE_REQUEST,
+    });
+
+    const {
+      adminLogin: { adminInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${adminInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.delete(`${url}/${id}`, config);
+
+    dispatch({
+      type: FAQ_DELETE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: FAQ_DELETE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
