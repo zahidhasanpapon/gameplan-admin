@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
@@ -13,7 +13,8 @@ const FaqEditScreen = () => {
   const dispatch = useDispatch();
 
   const faqCreate = useSelector((state) => state.faqCreate);
-  const { loading, error, faq } = faqCreate;
+  // const { loading, error, faq } = faqCreate;
+  const { loading, error } = faqCreate;
 
   const submitHandler = (e) => {
     e.preventDefault();

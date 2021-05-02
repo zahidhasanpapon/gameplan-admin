@@ -31,6 +31,15 @@ const Header = () => {
                   <LinkContainer to="/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
+                  <LinkContainer to="/adminlist">
+                    <NavDropdown.Item>Admin List</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/admin/reviewlist">
+                    <NavDropdown.Item>Reviews</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/admin/faqlist">
+                    <NavDropdown.Item>Faqs</NavDropdown.Item>
+                  </LinkContainer>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout
                   </NavDropdown.Item>
@@ -42,7 +51,7 @@ const Header = () => {
                   </Nav.Link>
                 </LinkContainer>
               )}
-              {adminInfo && (
+              {/* {adminInfo && (
                 <NavDropdown title="Admin" id="adminmenu">
                   <LinkContainer to="/adminlist">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
@@ -54,7 +63,7 @@ const Header = () => {
                     <NavDropdown.Item>Faqs</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
-              )}
+              )} */}
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { listAdmins, deleteAdmin } from "../actions/adminActions";
+import { Link } from "react-router-dom";
 
 const AdminListScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -34,7 +35,17 @@ const AdminListScreen = ({ history }) => {
 
   return (
     <>
-      <h1>Admins</h1>
+      <Row className="align-items-center">
+        <Col>
+          <h1>ADMINS</h1>
+        </Col>
+        <Col className="text-right">
+          {/* <Button className="my-3">
+            <i className="fas fa-plus"></i>Create New Faq
+          </Button> */}
+          <Link to="/register">Create New Faq</Link>
+        </Col>
+      </Row>
       {loading ? (
         <Loader />
       ) : error ? (

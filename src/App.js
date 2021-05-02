@@ -13,6 +13,7 @@ import ReviewListScreen from "./Screens/ReviewListScreen";
 import ReviewEditScreen from "./Screens/ReviewEditScreen";
 import FaqListScreen from "./Screens/FaqListScreen";
 import FaqEditScreen from "./Screens/FaqEditScreen";
+import PhoneListScreen from "./Screens/PhoneListScreen";
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
       <Header />
       <main className="py-3">
         <Container>
-          <Route path="/" component={HomeScreen} exact />
+          <Route path="/" component={LoginScreen} exact />
           <Route path="/review/:id" component={ReviewScreen} />
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={RegisterScreen} />
@@ -31,6 +32,8 @@ const App = () => {
           <Route path="/reviews/:id/edit" component={ReviewEditScreen} />
           <Route path="/admin/faqlist" component={FaqListScreen} />
           <Route path="/faq/edit" component={FaqEditScreen} />
+          <Route path="/reviews" component={HomeScreen} />
+          <Route path="/phonenumbers" component={PhoneListScreen} />
         </Container>
       </main>
       <Footer />
