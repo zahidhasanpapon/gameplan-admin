@@ -28,7 +28,7 @@ const ProfileScreen = ({ location, history }) => {
       history.push("/login");
     } else {
       // if (!admin.name) {
-      if (!admin) {
+      if (!admin.name) {
         dispatch(getAdminDetails("profile"));
       } else {
         setName(admin.name);

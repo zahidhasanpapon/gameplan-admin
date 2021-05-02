@@ -20,9 +20,12 @@ import {
 import {
   faqCreateReducer,
   faqDeleteReducer,
+  faqDetailsReducer,
   faqListReducer,
+  faqUpdateReducer,
 } from "./reducers/faqReducers";
 import { phoneListReducer } from "./reducers/phoneReducers";
+import { contactListReducer } from "./reducers/contactReducers";
 
 const reducer = combineReducers({
   reviewList: reviewListReducer,
@@ -40,7 +43,10 @@ const reducer = combineReducers({
   faqList: faqListReducer,
   faqCreate: faqCreateReducer,
   faqDelete: faqDeleteReducer,
+  faqUpdate: faqUpdateReducer,
+  faqDetails: faqDetailsReducer,
   phoneList: phoneListReducer,
+  contactList: contactListReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo")

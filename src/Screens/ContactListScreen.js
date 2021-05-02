@@ -3,20 +3,20 @@ import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listPhones } from "../actions/phoneActions";
+import { listContacts } from "../actions/contactActions";
 
-const PhoneListScreen = ({ history, match }) => {
+const ContactListScreen = ({ history, match }) => {
   const dispatch = useDispatch();
 
-  const phoneList = useSelector((state) => state.phoneList);
-  const { loading, error, phones } = phoneList;
+  const contactList = useSelector((state) => state.contactList);
+  const { loading, error, contacts } = contactList;
 
   const adminLogin = useSelector((state) => state.adminLogin);
   const { adminInfo } = adminLogin;
 
   useEffect(() => {
     if (adminInfo) {
-      dispatch(listPhones());
+      dispatch(listContacts());
     } else {
       history.push("/login");
     }
@@ -24,9 +24,10 @@ const PhoneListScreen = ({ history, match }) => {
 
   return (
     <>
-      <h1>Requested Phone Numbers</h1>
+      <h1>Contact Lists</h1>
       {loading && <Loader />}
       {error && <Message variant="danger">{error}</Message>}
+
       {loading ? (
         <Loader />
       ) : error ? (
@@ -36,17 +37,21 @@ const PhoneListScreen = ({ history, match }) => {
           <thead>
             <tr>
               <th>ID</th>
-
+              <th>NAME</th>
+              <th>EMAIL</th>
               <th>PHONE</th>
-
+              <th>Message</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {phones.map((ph) => (
-              <tr key={ph._id}>
-                <td>{ph._id}</td>
-                <td>{ph.phone}</td>
+            {contacts.map((contact) => (
+              <tr key={contact._id}>
+                <td>{contact._id}</td>
+                <td>{contact.name}</td>
+                <td>{contact.email}</td>
+                <td>{contact.phone}</td>
+                <td>{contact.message}</td>
               </tr>
             ))}
           </tbody>
@@ -56,4 +61,4 @@ const PhoneListScreen = ({ history, match }) => {
   );
 };
 
-export default PhoneListScreen;
+export default ContactListScreen;

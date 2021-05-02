@@ -16,12 +16,6 @@ const FaqListScreen = ({ history }) => {
   const adminLogin = useSelector((state) => state.adminLogin);
   const { adminInfo } = adminLogin;
 
-  const deleteHandler = (id) => {
-    if (window.confirm("Are you sure")) {
-      dispatch(deleteFaq(id));
-    }
-  };
-
   useEffect(() => {
     if (adminInfo) {
       dispatch(listFaqs());
@@ -30,6 +24,12 @@ const FaqListScreen = ({ history }) => {
     }
   }, [dispatch, history, adminInfo]);
 
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure")) {
+      dispatch(deleteFaq(id));
+    }
+  };
+
   return (
     <>
       <Row className="align-items-center">
@@ -37,9 +37,6 @@ const FaqListScreen = ({ history }) => {
           <h1>FAQs</h1>
         </Col>
         <Col className="text-right">
-          {/* <Button className="my-3">
-            <i className="fas fa-plus"></i>Create New Faq
-          </Button> */}
           <Link to="/faq/edit">Create New Faq</Link>
         </Col>
       </Row>
@@ -64,7 +61,7 @@ const FaqListScreen = ({ history }) => {
                 <td>{faq.question}</td>
                 <td>{faq.answer}</td>
                 <td>
-                  <LinkContainer to={`admin/${faq._id}/edit`}>
+                  <LinkContainer to={`faq/${faq._id}/edit`}>
                     <Button variant="light" className="btn-sm">
                       <i className="fas fa-edit"></i>
                     </Button>

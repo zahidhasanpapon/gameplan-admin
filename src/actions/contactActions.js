@@ -1,14 +1,14 @@
 import {
-  PHONE_LIST_FAIL,
-  PHONE_LIST_REQUEST,
-  PHONE_LIST_SUCCESS,
-} from "../constants/phoneConstants";
+  CONTACT_LIST_FAIL,
+  CONTACT_LIST_REQUEST,
+  CONTACT_LIST_SUCCESS,
+} from "../constants/contactConstants";
 import axios from "axios";
-const url = "http://localhost:5000/link";
+const url = "http://localhost:5000/visitors";
 
-export const listPhones = () => async (dispatch, getState) => {
+export const listContacts = () => async (dispatch, getState) => {
   try {
-    dispatch({ type: PHONE_LIST_REQUEST });
+    dispatch({ type: CONTACT_LIST_REQUEST });
     const {
       adminLogin: { adminInfo },
     } = getState();
@@ -18,10 +18,10 @@ export const listPhones = () => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.get(url, config);
-    dispatch({ type: PHONE_LIST_SUCCESS, payload: data });
+    dispatch({ type: CONTACT_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
-      type: PHONE_LIST_FAIL,
+      type: CONTACT_LIST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

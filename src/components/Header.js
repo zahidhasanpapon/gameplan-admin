@@ -40,6 +40,12 @@ const Header = () => {
                   <LinkContainer to="/admin/faqlist">
                     <NavDropdown.Item>Faqs</NavDropdown.Item>
                   </LinkContainer>
+                  <LinkContainer to="/contacts">
+                    <NavDropdown.Item>Contacts</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/phonenumbers">
+                    <NavDropdown.Item>Phone Numbers</NavDropdown.Item>
+                  </LinkContainer>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout
                   </NavDropdown.Item>

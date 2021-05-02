@@ -9,7 +9,7 @@ export const phoneListReducer = (state = { phones: [] }, action) => {
     case PHONE_LIST_REQUEST:
       return { loading: true, phones: [] };
     case PHONE_LIST_SUCCESS:
-      return { loading: false, faqs: action.payload };
+      return { loading: false, phones: action.payload };
     case PHONE_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:

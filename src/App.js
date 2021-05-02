@@ -14,6 +14,8 @@ import ReviewEditScreen from "./Screens/ReviewEditScreen";
 import FaqListScreen from "./Screens/FaqListScreen";
 import FaqEditScreen from "./Screens/FaqEditScreen";
 import PhoneListScreen from "./Screens/PhoneListScreen";
+import ContactListScreen from "./Screens/ContactListScreen";
+import LandingScreen from "./Screens/LandingScreen";
 
 const App = () => {
   return (
@@ -21,19 +23,24 @@ const App = () => {
       <Header />
       <main className="py-3">
         <Container>
-          <Route path="/" component={LoginScreen} exact />
+          <Route path="/" component={LandingScreen} exact />
+
+          <Route path="/reviews" component={HomeScreen} />
           <Route path="/review/:id" component={ReviewScreen} />
+          <Route path="/reviews/:id/edit" component={ReviewEditScreen} />
+          <Route path="/admin/reviewlist" component={ReviewListScreen} />
+
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={RegisterScreen} />
           <Route path="/profile" component={ProfileScreen} />
           <Route path="/adminlist" component={AdminListScreen} />
-          <Route path="/admin/reviewlist" component={ReviewListScreen} />
           <Route path="/admin/:id/edit" component={AdminEditScreen} />
-          <Route path="/reviews/:id/edit" component={ReviewEditScreen} />
+
           <Route path="/admin/faqlist" component={FaqListScreen} />
-          <Route path="/faq/edit" component={FaqEditScreen} />
-          <Route path="/reviews" component={HomeScreen} />
+          <Route path="/admin/faq/:id/edit" component={FaqEditScreen} />
+
           <Route path="/phonenumbers" component={PhoneListScreen} />
+          <Route path="/contacts" component={ContactListScreen} />
         </Container>
       </main>
       <Footer />

@@ -18,7 +18,7 @@ const ReviewEditScreen = ({ match, history }) => {
   const [quote, setQuote] = useState("");
   const [rating, setRating] = useState(0);
   const [uploading, setUploading] = useState(false);
-  console.log(typeof rating);
+
   const dispatch = useDispatch();
 
   const reviewDetails = useSelector((state) => state.reviewDetails);

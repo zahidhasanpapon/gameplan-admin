@@ -40,10 +40,7 @@ const AdminListScreen = ({ history }) => {
           <h1>ADMINS</h1>
         </Col>
         <Col className="text-right">
-          {/* <Button className="my-3">
-            <i className="fas fa-plus"></i>Create New Faq
-          </Button> */}
-          <Link to="/register">Create New Faq</Link>
+          <Link to="/register">Create New Admin Profile</Link>
         </Col>
       </Row>
       {loading ? (
