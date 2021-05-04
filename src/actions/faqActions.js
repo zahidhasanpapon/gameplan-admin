@@ -81,10 +81,7 @@ export const createFaq = (question, answer) => async (dispatch, getState) => {
 
 export const deleteFaq = (id) => async (dispatch, getState) => {
   try {
-    dispatch({
-      type: FAQ_DELETE_REQUEST,
-    });
-
+    dispatch({ type: FAQ_DELETE_REQUEST });
     const {
       adminLogin: { adminInfo },
     } = getState();
@@ -95,11 +92,9 @@ export const deleteFaq = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.delete(`${url}/${id}`, config);
-
+    await axios.delete(`${url}/${id}`, config);
     dispatch({
       type: FAQ_DELETE_SUCCESS,
-      payload: data,
     });
   } catch (error) {
     dispatch({
@@ -124,11 +119,12 @@ export const updateFaq = (faq) => async (dispatch, getState) => {
 
     const config = {
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${adminInfo.token}`,
       },
     };
 
-    const { data } = await axios.delete(`${url}/${faq._id}`, config);
+    const { data } = await axios.put(`${url}/${faq._id}`, faq, config);
 
     dispatch({
       type: FAQ_UPDATE_SUCCESS,

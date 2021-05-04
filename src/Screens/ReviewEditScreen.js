@@ -34,7 +34,7 @@ const ReviewEditScreen = ({ match, history }) => {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: REVIEW_UPDATE_RESET });
-      history.push("/");
+      history.push("/admin/reviewlist");
     } else {
       if (!review.name || review._id !== reviewId) {
         dispatch(listReviewDetails(reviewId));

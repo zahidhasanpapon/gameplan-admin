@@ -13,6 +13,13 @@ const FaqListScreen = ({ history }) => {
   const faqList = useSelector((state) => state.faqList);
   const { loading, error, faqs } = faqList;
 
+  const faqDelete = useSelector((state) => state.faqDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = faqDelete;
+
   const adminLogin = useSelector((state) => state.adminLogin);
   const { adminInfo } = adminLogin;
 
@@ -22,7 +29,7 @@ const FaqListScreen = ({ history }) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, adminInfo]);
+  }, [dispatch, history, adminInfo, successDelete]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {
@@ -37,9 +44,11 @@ const FaqListScreen = ({ history }) => {
           <h1>FAQs</h1>
         </Col>
         <Col className="text-right">
-          <Link to="/faq/edit">Create New Faq</Link>
+          <Link to="/faq/new">Create New Faq</Link>
         </Col>
       </Row>
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (

@@ -1,15 +1,22 @@
 import { useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listContacts } from "../actions/contactActions";
+import { listContacts, deleteContact } from "../actions/contactActions";
 
 const ContactListScreen = ({ history, match }) => {
   const dispatch = useDispatch();
 
   const contactList = useSelector((state) => state.contactList);
   const { loading, error, contacts } = contactList;
+
+  const contactDelete = useSelector((state) => state.contactDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = contactDelete;
 
   const adminLogin = useSelector((state) => state.adminLogin);
   const { adminInfo } = adminLogin;
@@ -20,11 +27,19 @@ const ContactListScreen = ({ history, match }) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, adminInfo]);
+  }, [dispatch, history, adminInfo, successDelete]);
+
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure")) {
+      dispatch(deleteContact(id));
+    }
+  };
 
   return (
     <>
       <h1>Contact Lists</h1>
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
       {loading && <Loader />}
       {error && <Message variant="danger">{error}</Message>}
 
@@ -52,6 +67,15 @@ const ContactListScreen = ({ history, match }) => {
                 <td>{contact.email}</td>
                 <td>{contact.phone}</td>
                 <td>{contact.message}</td>
+                <td>
+                  <Button
+                    variant="danger"
+                    className="btn-sm"
+                    onClick={() => deleteHandler(contact._id)}
+                  >
+                    <i className="fas fa-trash"></i>
+                  </Button>
+                </td>
               </tr>
             ))}
           </tbody>

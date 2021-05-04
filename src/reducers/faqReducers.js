@@ -1,7 +1,7 @@
 import {
   FAQ_CREATE_FAIL,
   FAQ_CREATE_REQUEST,
-  FAQ_CREATE_RESET,
+  // FAQ_CREATE_RESET,
   FAQ_CREATE_SUCCESS,
   FAQ_DELETE_FAIL,
   FAQ_DELETE_REQUEST,
@@ -36,11 +36,9 @@ export const faqCreateReducer = (state = {}, action) => {
     case FAQ_CREATE_REQUEST:
       return { loading: true };
     case FAQ_CREATE_SUCCESS:
-      return { loading: false, success: true, faq: action.payload };
+      return { loading: false, faq: action.payload };
     case FAQ_CREATE_FAIL:
       return { loading: false, error: action.payload };
-    case FAQ_CREATE_RESET:
-      return {};
     default:
       return state;
   }
@@ -59,7 +57,7 @@ export const faqDeleteReducer = (state = {}, action) => {
   }
 };
 
-export const faqUpdateReducer = (state = { faq: {} }, action) => {
+export const faqUpdateReducer = (state = {}, action) => {
   switch (action.type) {
     case FAQ_UPDATE_REQUEST:
       return { loading: true };

@@ -75,7 +75,6 @@ export const adminUpdateProfileReducer = (state = {}, action) => {
       return { loading: false, success: true, adminInfo: action.payload };
     case ADMIN_UPDATE_PROFILE_FAIL:
       return { loading: false, error: action.payload };
-
     default:
       return state;
   }

@@ -24,8 +24,11 @@ import {
   faqListReducer,
   faqUpdateReducer,
 } from "./reducers/faqReducers";
-import { phoneListReducer } from "./reducers/phoneReducers";
-import { contactListReducer } from "./reducers/contactReducers";
+import { phoneListReducer, phoneDeleteReducer } from "./reducers/phoneReducers";
+import {
+  contactDeleteReducer,
+  contactListReducer,
+} from "./reducers/contactReducers";
 
 const reducer = combineReducers({
   reviewList: reviewListReducer,
@@ -46,7 +49,9 @@ const reducer = combineReducers({
   faqUpdate: faqUpdateReducer,
   faqDetails: faqDetailsReducer,
   phoneList: phoneListReducer,
+  phoneDelete: phoneDeleteReducer,
   contactList: contactListReducer,
+  contactDelete: contactDeleteReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo")

@@ -29,7 +29,7 @@ const FaqEditScreen = ({ match, history }) => {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: FAQ_UPDATE_RESET });
-      history.push("/");
+      history.push("/admin/faqlist");
     } else {
       if (!faq.question || faq._id !== faqId) {
         dispatch(getFaqDetails(faqId));
@@ -41,8 +41,8 @@ const FaqEditScreen = ({ match, history }) => {
   }, [faq, faqId, dispatch, history, successUpdate]);
 
   const submitHandler = (e) => {
-    // e.preventDefault();
-    // dispatch(updateFaq({ _id: faqId, question, answer }));
+    e.preventDefault();
+    dispatch(updateFaq({ _id: faqId, question, answer }));
   };
 
   return (
