@@ -90,8 +90,8 @@ const ReviewListScreen = ({ history, match }) => {
         <Table striped bordered hover responsive className="table-sm">
           <thead>
             <tr>
-              <th>IMAGE</th>
               <th>ID</th>
+              {/* <th>Image</th> */}
               <th>NAME</th>
               <th>TEAM</th>
               <th>Quote</th>
@@ -103,7 +103,7 @@ const ReviewListScreen = ({ history, match }) => {
             {reviews.map((review) => (
               <tr key={review._id}>
                 <td>{review._id}</td>
-                <td>{review.image}</td>
+                {/* <td>{review.image}</td> */}
                 <td>{review.name}</td>
                 <td>{review.team}</td>
                 <td>{review.quote}</td>

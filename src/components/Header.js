@@ -20,12 +20,12 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <LinkContainer to="/reviews">
+              {/* <LinkContainer to="/reviews">
                 <Nav.Link>Reviews</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/faq">
                 <Nav.Link>FAQ</Nav.Link>
-              </LinkContainer>
+              </LinkContainer> */}
               {adminInfo ? (
                 <NavDropdown title={adminInfo.name} id="adminname">
                   <LinkContainer to="/profile">

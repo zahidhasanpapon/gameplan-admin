@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
@@ -38,6 +38,9 @@ const RegisterScreen = ({ location, history }) => {
 
   return (
     <FormContainer>
+      <Link to="adminlist" className="btn btn-light">
+        Go Back
+      </Link>
       <h1>Register</h1>
       {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}
